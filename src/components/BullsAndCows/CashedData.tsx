@@ -1,6 +1,6 @@
 import React from "react";
 
-import Aux from "../Aux";
+import Aux from "../../hoc/Aux";
 
 interface CashedData {
   userNumbers: Array<number>;

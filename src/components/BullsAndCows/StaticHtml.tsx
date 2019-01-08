@@ -1,5 +1,5 @@
 import React from "react";
-import Aux from "../Aux";
+import Aux from "../../hoc/Aux";
 
 export const HEADER_INFO = (
   <div className="header">

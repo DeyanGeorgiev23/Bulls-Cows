@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import * as actionTypes from "../store/actions";
-import Aux from "../Aux";
+import * as actionTypes from "../../store/actions";
+import Aux from "../../hoc/Aux";
 
 interface State {
   showHelper: boolean;
