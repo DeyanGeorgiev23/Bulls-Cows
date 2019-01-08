@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import "../App.css";
+import "../../App.css";
 
-import * as actionTypes from "../store/actions";
+import * as actionTypes from "../../store/actions";
 import Inputs from "./Inputs";
 import Output from "./Outputs";
 import Header from "./Header";

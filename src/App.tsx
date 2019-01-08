@@ -1,5 +1,5 @@
 import React from "react";
-import BullsAndCows from "./BullsAndCows/BullsAndCows";
+import BullsAndCows from "./components/BullsAndCows/BullsAndCows";
 
 class App extends React.PureComponent {
   render() {
