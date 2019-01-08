@@ -2,7 +2,7 @@ import * as actionTypes from "./actions";
 
 import { AnyAction } from "redux";
 
-import NumberGenerator from "../components/BullsAndCows/funcs/NumbersGenerator";
+import NumberGenerator from "../funcs/NumbersGenerator";
 
 interface Statistic {
   userNumbers: Array<number>;

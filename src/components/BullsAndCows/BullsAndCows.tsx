@@ -10,9 +10,9 @@ import Output from "./Outputs";
 import Header from "./Header";
 import Helper from "./Helpers";
 import CashedData from "./CashedData";
-import Information from "./Information";
+import Information from "../Static/Information";
 
-import * as StaticHTML from "./StaticHtml";
+import * as StaticHTML from "../Static/StaticHtml";
 
 interface CashedData {
   userNumbers: Array<number>;

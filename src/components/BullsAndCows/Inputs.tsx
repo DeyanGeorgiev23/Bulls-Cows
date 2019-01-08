@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
 import * as actionTypes from "../../store/actions";
-import NumbersChecker from "./funcs/NumbersChecker";
+import NumbersChecker from "../../funcs/NumbersChecker";
 
 interface KeyboardEvent {
   key: string;
