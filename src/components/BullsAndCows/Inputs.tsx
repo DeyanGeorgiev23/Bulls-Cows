@@ -90,14 +90,16 @@ class Inputs extends React.PureComponent<Props> {
       const numbers = this.props.numbers;
       const userNumbers = this.props.userNumbers;
       const username = this.props.username;
+      const seconds = this.props.seconds;
 
-      let { newData, newSuccessMessage, newShowInput } = NumbersChecker(
-        numbers,
-        userNumbers,
-        username,
-        data
-      );
+      let {
+        newData,
+        newSuccessMessage,
+        newShowInput,
+        gameFinish
+      } = NumbersChecker(numbers, userNumbers, username, data, seconds);
 
+      this.props.getIsGameFinish(gameFinish);
       this.props.getStatistic(newData);
       this.props.getSuccessMessages(newSuccessMessage);
       this.props.getErrorMessages("");
@@ -145,7 +147,8 @@ const mapStateToProps = (state: any) => ({
   numbers: state.numbers,
   userNumbers: state.userNumbers,
   username: state.username,
-  showBtn: state.showBtn
+  showBtn: state.showBtn,
+  seconds: state.seconds
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
@@ -160,7 +163,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   getUserNumbers: (numbers: Array<number>) =>
     dispatch({ type: actionTypes.GET_USER_NUMBERS, payload: numbers }),
   getShowInput: (condition: boolean) =>
-    dispatch({ type: actionTypes.SHOW_INPUT, payload: condition })
+    dispatch({ type: actionTypes.SHOW_INPUT, payload: condition }),
+  getIsGameFinish: (condition: boolean) =>
+    dispatch({ type: actionTypes.GAME_FINISH, payload: condition })
 });
 
 export default connect(

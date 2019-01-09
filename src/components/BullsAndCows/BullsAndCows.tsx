@@ -27,6 +27,7 @@ interface Statistic {
 
 interface State {
   showCashed: boolean;
+  timer: any;
 }
 
 type StateProps = ReturnType<typeof mapStateToProps>;
@@ -36,7 +37,8 @@ type Props = StateProps & DispatchProps;
 
 class BullsAndCows extends React.PureComponent<Props> {
   state: State = {
-    showCashed: false
+    showCashed: false,
+    timer: null
   };
 
   componentDidMount = () => {
@@ -47,8 +49,20 @@ class BullsAndCows extends React.PureComponent<Props> {
       this.props.getUsername(username);
       this.props.getShow(true);
       this.props.getShowBtn(false);
+
+      let seconds = 0;
+      this.state.timer = setInterval(() => {
+        seconds++;
+        this.props.getSeconds(seconds);
+      }, 1000);
     }
   };
+
+  componentWillReceiveProps(nextProps: any) {
+    if (nextProps.gameFinished !== this.props.gameFinished) {
+      clearInterval(this.state.timer);
+    }
+  }
 
   showCashedData = () => {
     const data = localStorage.getItem("userData");
@@ -112,7 +126,9 @@ const mapStateToProps = (state: any) => ({
   statistic: state.statistic,
   cashedData: state.cashedData,
   show: state.show,
-  showInfo: state.showInfo
+  showInfo: state.showInfo,
+  gameFinished: state.gameFinished,
+  seconds: state.seconds
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
@@ -126,7 +142,9 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   getShowBtn: (condition: boolean) =>
     dispatch({ type: actionTypes.SHOW_BTN, payload: condition }),
   getShowInfo: (condition: boolean) =>
-    dispatch({ type: actionTypes.SHOW_INFO, payload: condition })
+    dispatch({ type: actionTypes.SHOW_INFO, payload: condition }),
+  getSeconds: (sec: number) =>
+    dispatch({ type: actionTypes.SECONDS, payload: sec })
 });
 
 export default connect<StateProps, DispatchProps>(

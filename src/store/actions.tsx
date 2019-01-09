@@ -10,3 +10,5 @@ export const SHOW = "SHOW";
 export const SHOW_BTN = "SHOW_BTN";
 export const SHOW_INPUT = "SHOW_INPUT";
 export const SHOW_INFO = "SHOW_INFO";
+export const SECONDS = "SECONDS";
+export const GAME_FINISH = "GAME_FINISH";

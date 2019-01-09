@@ -1,19 +1,24 @@
+import HandleSeconds from "./HandleSeconds";
+
 interface Statistic {
   userNumbers: Array<number>;
   cows: number;
   bulls: number;
+  seconds: string;
 }
 
 const numbersChecker = (
   numbers: Array<number>,
   userNumbers: Array<number>,
   username: string,
-  data: Array<Statistic>
+  data: Array<Statistic>,
+  seconds: string
 ) => {
   let cows = 0;
   let bulls = 0;
   let successMessage = "";
   let showInput = true;
+  let gameFinished = false;
 
   for (let i = 0; i < numbers.length; i++) {
     if (numbers[i] === Number(userNumbers[i])) {
@@ -23,6 +28,7 @@ const numbersChecker = (
     }
 
     if (bulls === 4) {
+      gameFinished = true;
       successMessage = `Well done ${username} you guess the right digits!`;
       showInput = false;
       let savedData = [];
@@ -34,17 +40,19 @@ const numbersChecker = (
         }
       }
       const tries = data.length + 1;
-      savedData.push({ userNumbers, tries });
+      seconds = HandleSeconds(seconds);
+      savedData.push({ userNumbers, tries, seconds });
       localStorage.setItem("userData", JSON.stringify(savedData));
     }
   }
 
-  data.unshift({ userNumbers, cows, bulls });
+  data.unshift({ userNumbers, cows, bulls, seconds });
 
   return {
     newData: data,
     newSuccessMessage: successMessage,
-    newShowInput: showInput
+    newShowInput: showInput,
+    gameFinish: gameFinished
   };
 };
 

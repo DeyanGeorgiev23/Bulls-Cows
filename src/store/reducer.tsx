@@ -28,6 +28,8 @@ export interface StateReducer {
   showInput: boolean;
   showBtn: boolean;
   showInfo: boolean;
+  seconds: number;
+  gameFinished: boolean;
 }
 
 const INITIAL_STATE: StateReducer = {
@@ -42,7 +44,9 @@ const INITIAL_STATE: StateReducer = {
   show: false,
   showInput: true,
   showBtn: false,
-  showInfo: false
+  showInfo: false,
+  gameFinished: false,
+  seconds: 0
 };
 
 const reducer = (state = INITIAL_STATE, action: AnyAction) => {
@@ -73,6 +77,10 @@ const reducer = (state = INITIAL_STATE, action: AnyAction) => {
       return { ...state, showInput: action.payload };
     case actionTypes.SHOW_INFO:
       return { ...state, showInfo: action.payload };
+    case actionTypes.SECONDS:
+      return { ...state, seconds: action.payload };
+    case actionTypes.GAME_FINISH:
+      return { ...state, gameFinished: action.payload };
     default:
       return state;
   }

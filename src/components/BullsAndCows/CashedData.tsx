@@ -5,6 +5,7 @@ import Aux from "../../hoc/Aux";
 interface CashedData {
   userNumbers: Array<number>;
   tries: number;
+  seconds: number;
 }
 
 interface Props {
@@ -30,7 +31,7 @@ const cashedData = (props: Props) => {
                     <strong style={{ color: "red" }}>
                       ( {data.userNumbers.join(" ")} )
                     </strong>{" "}
-                    for {data.tries} attempts!
+                    for {data.tries} attempts! In {data.seconds} seconds!
                   </p>
                 </div>
               );
