@@ -31,8 +31,9 @@ const cashedData = (props: Props) => {
                     <strong style={{ color: "red" }}>
                       ( {data.userNumbers.join(" ")} )
                     </strong>{" "}
-                    for {data.tries} attempts! In {data.seconds} seconds!
+                    for {data.tries} attempts!
                   </p>
+                  <p>In {data.seconds} minutes!</p>
                 </div>
               );
             })

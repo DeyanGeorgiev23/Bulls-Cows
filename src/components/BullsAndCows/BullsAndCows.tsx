@@ -49,13 +49,13 @@ class BullsAndCows extends React.PureComponent<Props> {
       this.props.getUsername(username);
       this.props.getShow(true);
       this.props.getShowBtn(false);
-
-      let seconds = 0;
-      this.state.timer = setInterval(() => {
-        seconds++;
-        this.props.getSeconds(seconds);
-      }, 1000);
     }
+
+    let seconds = 0;
+    this.state.timer = setInterval(() => {
+      seconds++;
+      this.props.getSeconds(seconds);
+    }, 1000);
   };
 
   componentWillReceiveProps(nextProps: any) {
