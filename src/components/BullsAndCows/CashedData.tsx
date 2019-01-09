@@ -33,7 +33,7 @@ const cashedData = (props: Props) => {
                     </strong>{" "}
                     for {data.tries} attempts!
                   </p>
-                  <p>In {data.seconds} seconds!</p>
+                  <p>In {data.seconds} minutes!</p>
                 </div>
               );
             })
